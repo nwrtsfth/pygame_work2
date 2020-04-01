@@ -1,0 +1,224 @@
+class Surface(SurfaceType)
+
+
+Meerdere typen vormen:
+-Abstracte vormen (punt, shape, tekst)
+-Vormen met eigen kleur (vierkant, cirkel, driehoek, etc.)
+-Vormen zonder eigen kleur (afbeeldingen, groepen, datatables, sliders, knoppen etc.)
+
+
+Een betere manier voor tekst:
+-Standaard voor tekst: zwart, niet bold, italic of underlined.
+-pt en lettertype los doorgeven (standaard: Arial, 35)
+
+Alle tekst wordt opgeslagen in Tekst objecten (abstracte vormen)
+
+Deze tekst objecten worden samengevoegt tot een echt tekst object
+
+
+class _Text:
+	def __init__(self):
+		self.content = ""
+		self.color = Color(0, 0, 0)
+		self.pt = 40
+		self.font = "Arial"
+		self.bold = False
+		self.italic = False
+		self.underlined = False
+
+[("Hallo, dit is tekst", Color(0, 0, 0), Text.bold, Text.italic)]
+
+
+
+Je moet een lijst doorgeven met tuples
+Elke tuple kan een aantal dingen hebben:
+-De conntent (verplicht)
+-De kleur (niet verplicht, als niet dan standaardkleur is zwart)
+-Bold (niet verplicht, standaard is bold=False)
+-Italic (niet verplicht, standaard is italic=False)
+-Underlined (niet verplicht, standaard is underlined=False)
+
+
+        self.content = content
+        self.fontname = _csdf(font, _Def.font())
+        self.pt = _csdf(pt, _Def.pt())
+        self.font = _font.SysFont(self.fontname, self.pt)
+        self.color = _csdf(color, _Def.text_color())
+        render = self.font.render(content, True, self.color)
+        Image.__init__(self, render, x, y, x_mode, y_mode, x_offset, y_offset)
+
+
+
+tuple unpacking
+tuple text_tuple
+
+
+class _TextObject():
+	def __init__(self, content, color, font, pt, bold=False, italic=False, underlined=False):
+		self.content = content
+		self.color = color
+		self.font = font
+
+		self.pt = pt
+		self.bold = bold
+		self.italic = italic
+		self.underlined = underlined
+
+		self.render = 
+
+	@staticmethod
+	def from_tuple(font, pt, attributes):
+		content = ""
+		color = Color(0, 0, 0)
+		bold = False
+		italic = False
+		underlined = False
+
+		for attribute in attributes:
+			if type(attribute) is string:
+				content = attribute
+			elif type(attribute) is Color:
+				color = attribute
+			elif attribute == Text.bold:
+				bold = True
+			elif attribute == Text.italic:
+				italic = True
+			elif attribute == Text.underlined:
+				underlined = True
+
+		return _TextObject(content, color, font, pt, bold, italic, underlined)
+
+
+class Text(Surface):
+	def __init__(self, x, y, font, pt, text_list):
+		self.x = x
+		self.y = y
+		self.pt = pt
+		self.font = font
+		self.text_objects = list()
+		for text in text_list:
+			self.text_objects.append(_TextObject(self.font, self.pt, text))
+
+	def render(self):
+
+
+for attribute in text_tuple:
+	if type(attribute) is string:
+		self.content = attribute
+	elif type(attribute) is Color:
+		self.color = attribute
+	elif attribute == Text.bold:
+		self.bold = True
+	elif attribute == Text.italic:
+		self.italic = True
+	elif attribute == Text.underlined:
+		self.underlined = False
+
+
+Alle mogelijke functies voor surfaces:
+
+resize
+
+
+class Shape():
+	def __init__():
+		self.x = x
+		self.y = y
+		self.x2 = x2
+		sel.width = width
+		self.height = height
+		self.x_offset = x_offset
+		self.y_offset = y_offset
+		self.x_mode = x_mode
+		self.y_mode = y_mode
+
+	def move_x(dx):
+
+	def move_y(dy):
+
+	def move(dx, dy):
+
+
+	def set_x(x):
+
+	def set_y(y):
+
+	def set_pos(x, y):
+
+
+
+	def move_width(d_width):
+
+	def move_height(d_height):
+
+	def move_size(d_width, d_height):
+
+
+	def set_width(width):
+
+	def set_height(height):
+
+	def set_size(width, height):
+
+
+
+	def move_x_offset(dx):
+
+	def move_y_offset(dy):
+
+	def move_offset(dx, dy):
+
+
+	def set_x_offset(x):
+
+	def set_y_offset(y):
+
+	def set_offset(x, y):
+
+
+Shapes:
+	Rectangle
+	Rhombus
+	Line
+	Circle
+	Triangle
+	Polygon
+
+Surface based:
+	_TextObject
+	Text
+	Image
+	Group
+	StackGroup
+
+
+volgorde:
+x
+y
+width
+height
+x2
+y2
+x_mode
+y_mode
+x_offset
+y_offset
+
+thickness
+radius
+self.xm
+self.ym
+
+color
+
+content
+color
+pt
+fontname
+bold
+italic
+underline
+
+points
+shapes
+text_objects

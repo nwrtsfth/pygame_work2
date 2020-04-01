@@ -1,0 +1,13 @@
+Updaten van pygame_work:
+	Toevoegen van input functies (keyboard, mouse)
+	Volledig sound toevoegen
+	Originele color door pygame color vervangen
+	Voeg cursor module support toe aan mouse module
+	Vervang font module met freetype module
+
+
+
+
+Kijken naar scrap module
+Joystick support toevoegen in input?
+Update de display() functie, voeg mogelijke parameter
